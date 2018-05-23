@@ -1,0 +1,17 @@
+type User {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  userById(id: ID!): User!
+  users: UserConnection! @updaters(
+    add: ["createUser"],
+    delete: ["deleteUser"],
+  )
+}
+
+type Mutation {
+  createUser(input: UserInput!): User!
+  deleteUser(id: ID!): User!
+}

@@ -1,0 +1,9 @@
+@getter("userById")
+type User {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  userById(id: ID!): User!
+}

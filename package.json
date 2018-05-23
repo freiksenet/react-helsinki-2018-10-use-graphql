@@ -18,6 +18,8 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "spectacle": "^4.0.0",
+    "spectacle-code-slide": "^0.5.2",
+    "spectacle-image-slide": "^1.0.1",
     "spectacle-renderer": "^0.0.3"
   },
   "devDependencies": {
@@ -49,6 +51,7 @@
     "is-buffer": "^1.1.5",
     "markdown-loader": "^2.0.1",
     "node-libs-browser": "^2.0.0",
+    "prettier": "^1.12.1",
     "raw-loader": "^0.5.1",
     "react-hot-loader": "^3.1.1",
     "react-transform-catch-errors": "^1.0.2",

@@ -1,0 +1,10 @@
+* GraphQL is unique in how much clients can do for you
+* It is because at the end all GraphQL clients have assumptions about APIs
+* The more one can assume about API, the better your client would be at solving your problems automatically
+* Therefore, the best client is the one that has the most assumptions about your api right
+* Compilable clients from graphql schemas?
+
+* REST's problems is that it's very generic, therefore REST clients can't actually have much logic
+* Eg Ember Data shows that if you know how api works you can build more with REST
+* GraphQL is already more limited, which is it's greatest power
+* An even more limited API, like Relay-style GraphQL, adds more possibilities

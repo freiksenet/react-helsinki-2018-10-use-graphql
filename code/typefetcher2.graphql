@@ -1,0 +1,14 @@
+type User {
+  id: ID! @ID @fetcher("userById")
+  name: String!
+}
+
+type Post {
+  slug: String! @ID @fetcher("postBySlug")
+  user: User!
+}
+
+type Query {
+  userById(id: ID!): User!
+  postBySlug(slug: String!): Post!
+}
