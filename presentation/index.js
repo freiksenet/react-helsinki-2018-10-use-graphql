@@ -87,7 +87,10 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['zoom', 'spin']} bgImage={require('../assets/cats2.jpg')}>
+        <Slide
+          transition={['zoom', 'spin']}
+          bgImage={require('../assets/cats2.jpg')}
+        >
           <Heading textColor="white" size={5}>
             @freiksenet
           </Heading>
@@ -121,9 +124,7 @@ export default class Presentation extends React.Component {
             <Text size={1}>client state management</Text>
           </Appear>
           <Appear>
-            <Text size={1}>
-              Redux :)
-            </Text>
+            <Text size={1}>Redux :)</Text>
           </Appear>
           <Appear>
             <Text size={1}>MobX, Flux, Ember Data</Text>
@@ -202,14 +203,29 @@ export default class Presentation extends React.Component {
         {/* fetch only once, can't reuse in contexts, invalidate by query, can't handle data completeness, small amount of code */}
 
         <Slide>
-          <Heading size={5}>
-            Resource caching
-          </Heading>
-          <Text margin="25px 0 0 0"><Code>{'/pictures'}</Code></Text>
-          <Text margin="10px 0 0 0"><Code>{'/pictures/5'}</Code></Text>
-          <Text margin="10px 0 0 0"><Code>{'/me'}</Code></Text>
+          <Heading size={5}>Resource caching</Heading>
+          <Text margin="25px 0 0 0">
+            <Code>{'/pictures'}</Code>
+          </Text>
+          <Text margin="10px 0 0 0">
+            <Code>{'/pictures/5'}</Code>
+          </Text>
+          <Text margin="10px 0 0 0">
+            <Code>{'/me'}</Code>
+          </Text>
         </Slide>
 
+        {/* <Slide>
+          <Text size={6} margin="0 0 20px 0">
+            Resource caching
+          </Text>
+
+          <CodePane
+            className={biggerFont}
+            lang="js"
+            source={require('../code/resourcescaching.js')}
+          />
+        </Slide> */}
 
         <Slide>
           <Heading size={5}>Resource caching</Heading>
@@ -222,12 +238,30 @@ export default class Presentation extends React.Component {
 
         <Slide>
           <Heading size={5}>urql</Heading>
-          <Appear><Text>GraphQL resource caching</Text></Appear>
-          <Appear><Text>GraphQL queries as resources</Text></Appear>
-          <Appear><Text>Invalidation in mutations</Text></Appear>
+          <Appear>
+            <Text>GraphQL resource caching</Text>
+          </Appear>
+          <Appear>
+            <Text>GraphQL queries as resources</Text>
+          </Appear>
+          <Appear>
+            <Text>Invalidation in mutations</Text>
+          </Appear>
         </Slide>
 
         {/* show REST, show urql */}
+        {/* <Slide>
+          <Text size={6} margin="0 0 20px 0">
+            urql
+          </Text>
+
+          <CodePane
+            className={biggerFont}
+            lang="js"
+            source={require('../code/urql.js')}
+          />
+        </Slide> */}
+
 
         {/* normalization, caching by id */}
 
@@ -236,6 +270,31 @@ export default class Presentation extends React.Component {
             Object caching
           </Heading>
         </Slide>
+
+        <Slide>
+          <Heading size={5}>Object caching</Heading>
+          <Text margin="25px 0 0 0">
+            <Code>{'PictureList'}</Code>
+          </Text>
+          <Text margin="10px 0 0 0">
+            <Code>{'Picture[5]'}</Code>
+          </Text>
+          <Text margin="10px 0 0 0">
+            <Code>{'User'}</Code>
+          </Text>
+        </Slide>
+
+        {/* <Slide>
+          <Text size={6} margin="0 0 20px 0">
+            Object caching
+          </Text>
+
+          <CodePane
+            className={biggerFont}
+            lang="js"
+            source={require('../code/manualobject.js')}
+          />
+        </Slide> */}
 
         {/* fetch once, reuse in context, invalidation by id */}
 
@@ -254,15 +313,68 @@ export default class Presentation extends React.Component {
           <Text>✕ small amount of code</Text>
         </Slide>
 
+        <Slide>
+          <Text size={6} margin="0 0 20px 0">
+            Manual object normalization
+          </Text>
+
+          <CodePane
+            className={biggerFont}
+            lang="graphql"
+            source={require('../code/data.js')}
+          />
+        </Slide>
 
         {/* SHOW METADATA __TYPENAME */}
 
+        <Slide>
+          <Heading fit>But what if we knew the types?</Heading>
+        </Slide>
+
         {/* metadata is needed to know what data is available, otherwise check manually */}
+
+        <Slide>
+          <Text size={6} margin="0 0 20px 0">
+            Object normalization through metadata
+          </Text>
+
+          <CodePane
+            className={biggerFont}
+            lang="graphql"
+            source={require('../code/dataWithTypename.js')}
+          />
+        </Slide>
 
         <Slide>
           <Heading size={1} fit caps lineHeight={1}>
             Apollo Client
           </Heading>
+        </Slide>
+
+        <Slide>
+          <Text size={6} margin="0 0 20px 0">
+            Query
+          </Text>
+
+          <CodePane
+            className={biggerFont}
+            lang="graphql"
+            source={require('../code/pictures.graphql')}
+          />
+        </Slide>
+
+
+        <Slide>
+          <Heading size={5}>Apollo Client</Heading>
+          <Text margin="25px 0 0 0">
+            <Code>{'Picture:5'}</Code>
+          </Text>
+          <Text margin="10px 0 0 0">
+            <Code>{'User:10'}</Code>
+          </Text>
+          <Text margin="10px 0 0 0">
+            <Code>{'ROOT_QUERY'}</Code>
+          </Text>
         </Slide>
 
         {/* GRAPHQL DOES THAT ALREADY */}
@@ -277,8 +389,8 @@ export default class Presentation extends React.Component {
           <Heading size={5}>Apollo Client</Heading>
           <Text>✓ fetch only once</Text>
           <Text>⚒ reuse in contexts</Text>
-          <Text>⚒ update on mutation</Text>
-          <Text>⚒ data completeness</Text>
+          <Text>✓ update on mutation</Text>
+          <Text>✓ data completeness</Text>
           <Text>❓ small amount of code</Text>
         </Slide>
 
@@ -291,11 +403,21 @@ export default class Presentation extends React.Component {
 
         {/* while apollo does that, handling switching context is more manual */}
 
+        <Slide>
+          <Heading>✨</Heading>
+          <Heading fit>We can do more magic!</Heading>
+          <Heading>✨ </Heading>
+        </Slide>
+
         {/* knowing your api is the key */}
 
         {/* you can know your api with metadata or by restricting the api */}
 
         {/* graphQL is introspectable, both beforehand (introspection queries) and in runtime (__typename) */}
+
+        <Slide>
+          <Heading>What if we knew more about our API?</Heading>
+        </Slide>
 
         <Slide>
           <Heading size={1} fit caps lineHeight={1}>
@@ -309,6 +431,30 @@ export default class Presentation extends React.Component {
 
         {/* node interface */}
 
+        <Slide>
+          <Text size={6} margin="0 0 20px 0">
+            Node interface
+          </Text>
+
+          <CodePane
+            className={biggerFont}
+            lang="graphql"
+            source={require('../code/node.graphql')}
+          />
+        </Slide>
+
+            {/* <Slide>
+              <Text size={6} margin="0 0 20px 0">
+                Connections
+              </Text>
+
+              <CodePane
+                className={biggerFont}
+                lang="graphql"
+                source={require('../code/relayconnection.graphql')}
+              />
+            </Slide> */}
+
         {/* more powerful reuse in context */}
 
         {/* relay connections */}
@@ -317,9 +463,25 @@ export default class Presentation extends React.Component {
           <Heading size={5}>Relay</Heading>
           <Text>✓ fetch only once</Text>
           <Text>✓ reuse in contexts</Text>
-          <Text>⚒ update on mutation</Text>
+          <Text>✓ update on mutation</Text>
           <Text>✓ data completeness</Text>
           <Text>❓ small amount of code</Text>
+        </Slide>
+
+        <Slide>
+          <Heading fit>Does it have to be restrictive?</Heading>
+        </Slide>
+
+        <Slide>
+          <Text size={6} margin="0 0 20px 0">
+            Node interface v2
+          </Text>
+
+          <CodePane
+            className={biggerFont}
+            lang="graphql"
+            source={require('../code/nodeNew.graphql')}
+          />
         </Slide>
 
         {/* restrictions are abritrary at the end */}
@@ -367,11 +529,17 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <Heading caps>More metadata for metadata god!</Heading>
+          <Heading fit>Introspection on compile-time to get metadata</Heading>
         </Slide>
 
         <Slide>
-          <Heading fit size={5}>GraphQL annotations</Heading>
+          <Heading caps>More<br /> metadata <br/> for<br/> metadata<br/> god!</Heading>
+        </Slide>
+
+        <Slide>
+          <Heading fit size={5}>
+            GraphQL annotations
+          </Heading>
           <Text>Attach metadata to types or fields</Text>
         </Slide>
 
@@ -388,7 +556,6 @@ export default class Presentation extends React.Component {
             source={require('../code/typefetcher.graphql')}
           />
         </Slide>
-
 
         <Slide>
           <Text size={6} margin="0 0 20px 0">
@@ -418,7 +585,7 @@ export default class Presentation extends React.Component {
 
         <Slide>
           <Text size={6} margin="0 0 20px 0">
-            Connection annotations
+            List annotations
           </Text>
 
           <CodePane
@@ -448,18 +615,24 @@ export default class Presentation extends React.Component {
 
         <Slide>
           <Heading fit>Just scratching the surface!</Heading>
-          <Text margin="10px 0 0 0">This is practically unexplored area.</Text>
+          <Text margin="10px 0 0 0">This is practically unexplored area!</Text>
+          <Appear><Text margin="10px 0 0 0">Compilable caches from schema ✨</Text></Appear>
+          <Appear><Text margin="10px 0 0 0">Invalidation through query intersections ✨</Text></Appear>
         </Slide>
 
         <Slide>
-          <Heading  margin="0 0 20px 0">Conclusions</Heading>
+          <Heading margin="0 0 20px 0">Conclusions</Heading>
           <Appear>
-            <Text  margin="0 0 10px 0">GraphQL lets us build smart caches</Text>
+            <Text margin="0 0 10px 0">GraphQL lets us build smart caches</Text>
           </Appear>
           <Appear>
             <Text margin="0 0 10px 0">Metadata is the key</Text>
           </Appear>
-          <Appear><Text margin="0 0 10px 0">GraphQL has unique first-class introspection</Text></Appear>
+          <Appear>
+            <Text margin="0 0 10px 0">
+              GraphQL has first-class introspection
+            </Text>
+          </Appear>
           <Appear>
             <Text margin="0 0 10px 0">We can and should use it more</Text>
           </Appear>
@@ -468,7 +641,10 @@ export default class Presentation extends React.Component {
           </Appear>
         </Slide>
 
-        <Slide transition={['zoom', 'spin']} bgImage={require('../assets/cats3.jpg')}>
+        <Slide
+          transition={['zoom', 'spin']}
+          bgImage={require('../assets/cats3.jpg')}
+        >
           <Heading size={4} lineHeight={1} textColor="white">
             Thank you!
           </Heading>

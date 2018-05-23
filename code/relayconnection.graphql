@@ -1,0 +1,17 @@
+type UserConnection {
+  edges: [UserEdge]
+  pageInfo: PageInfo
+}
+
+type UserEdge {
+  cursor: Cursor
+  node: User
+}
+
+type PageInfo {
+  hasNextPage: Boolean
+}
+
+type Query {
+  users(after: Cursor, first: Int): UserConnection
+}

@@ -1,0 +1,21 @@
+query {
+  pictures {
+    __typename
+    id
+    author {
+      __typename
+      id
+      name
+    }
+    comments {
+      __typename
+      id
+      text
+      author {
+        __typename
+        id
+        name
+      }
+    }
+  }
+}

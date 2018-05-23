@@ -5,7 +5,7 @@ type User {
 
 type Query {
   userById(id: ID!): User!
-  users: UserConnection! @updaters(
+  users: [User!]! @updaters(
     add: ["createUser"],
     delete: ["deleteUser"],
   )
