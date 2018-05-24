@@ -283,7 +283,7 @@ export default class Presentation extends React.Component {
           </Text>
         </Slide>
 
-        <Slide>
+        {/* <Slide>
           <Text size={6} margin="0 0 20px 0">
             Manual object normalization
           </Text>
@@ -293,7 +293,41 @@ export default class Presentation extends React.Component {
             lang="graphql"
             source={require('../code/data.js')}
           />
+        </Slide> */}
+
+        <Slide>
+          <Heading size={6} margin="0 0 20px 0">
+            Manual object normalization
+          </Heading>
+          <Layout>
+            <Fill>
+              <Appear>
+                <div>
+                  <CodePane
+                    className={biggerFont}
+                    lang="graphql"
+                    source={require('../code/data.js')}
+                  />
+                </div>
+              </Appear>
+            </Fill>
+            <Fit>
+              <div style={{ width: 20 }} />
+            </Fit>
+            <Fill>
+              <Appear>
+                <div>
+                  <CodePane
+                    className={biggerFont}
+                    lang="graphql"
+                    source={require('../code/normalizationresult.js')}
+                  />
+                </div>
+              </Appear>
+            </Fill>
+          </Layout>
         </Slide>
+
 
         {/* <Slide>
           <Text size={6} margin="0 0 20px 0">
