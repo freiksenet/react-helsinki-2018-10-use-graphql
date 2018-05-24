@@ -262,7 +262,6 @@ export default class Presentation extends React.Component {
           />
         </Slide> */}
 
-
         {/* normalization, caching by id */}
 
         <Slide>
@@ -282,6 +281,18 @@ export default class Presentation extends React.Component {
           <Text margin="10px 0 0 0">
             <Code>{'User'}</Code>
           </Text>
+        </Slide>
+
+        <Slide>
+          <Text size={6} margin="0 0 20px 0">
+            Manual object normalization
+          </Text>
+
+          <CodePane
+            className={biggerFont}
+            lang="graphql"
+            source={require('../code/data.js')}
+          />
         </Slide>
 
         {/* <Slide>
@@ -311,18 +322,6 @@ export default class Presentation extends React.Component {
           <Text>⚒ update on mutation</Text>
           <Text>⚒ data completeness</Text>
           <Text>✕ small amount of code</Text>
-        </Slide>
-
-        <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            Manual object normalization
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="graphql"
-            source={require('../code/data.js')}
-          />
         </Slide>
 
         {/* SHOW METADATA __TYPENAME */}
@@ -363,7 +362,6 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-
         <Slide>
           <Heading size={5}>Apollo Client</Heading>
           <Text margin="25px 0 0 0">
@@ -373,7 +371,7 @@ export default class Presentation extends React.Component {
             <Code>{'User:10'}</Code>
           </Text>
           <Text margin="10px 0 0 0">
-            <Code>{'ROOT_QUERY'}</Code>
+            <Code>{'ROOT.pictures'}</Code>
           </Text>
         </Slide>
 
@@ -386,22 +384,6 @@ export default class Presentation extends React.Component {
         {/* talk about updating stuff by id automatically and getting updates */}
 
         <Slide>
-          <Heading size={5}>Apollo Client</Heading>
-          <Text>✓ fetch only once</Text>
-          <Text>⚒ reuse in contexts</Text>
-          <Text>✓ update on mutation</Text>
-          <Text>✓ data completeness</Text>
-          <Text>❓ small amount of code</Text>
-        </Slide>
-
-        {/*
-        <Slide bgColor="tertiary">
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Why you can do it with GraphQL?
-          </Heading>
-        </Slide> */}
-
-        <Slide>
           <Heading size={6} margin="0 0 20px 0">
             Reuse in context
           </Heading>
@@ -409,9 +391,8 @@ export default class Presentation extends React.Component {
             <Fill>
               <Appear>
                 <div>
-
                   <Text size={6} margin="0 0 10px 0">
-                    List
+                    <Code>pictures</Code>
                   </Text>
                   <CodePane
                     className={biggerFont}
@@ -428,7 +409,7 @@ export default class Presentation extends React.Component {
               <Appear>
                 <div>
                   <Text size={6} margin="0 0 10px 0">
-                    Item
+                    <Code>pictureById("p1")</Code>
                   </Text>
                   <CodePane
                     className={biggerFont}
@@ -440,6 +421,33 @@ export default class Presentation extends React.Component {
             </Fill>
           </Layout>
         </Slide>
+
+        <Slide>
+          <Heading size={6} margin="0 0 20px 0">
+            Query = info on completeness
+          </Heading>{' '}
+          <CodePane
+            className={biggerFont}
+            lang="graphql"
+            source={require('../code/apollocache.js')}
+          />
+        </Slide>
+
+        <Slide>
+          <Heading size={5}>Apollo Client</Heading>
+          <Text>✓ fetch only once</Text>
+          <Text>⚒ reuse in contexts</Text>
+          <Text>✓ update on mutation</Text>
+          <Text>✓ data completeness</Text>
+          <Text>✓ small amount of code</Text>
+        </Slide>
+
+        {/*
+        <Slide bgColor="tertiary">
+          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
+            Why you can do it with GraphQL?
+          </Heading>
+        </Slide> */}
 
         {/* while apollo does that, handling switching context is more manual */}
 
@@ -491,9 +499,8 @@ export default class Presentation extends React.Component {
             <Fill>
               <Appear>
                 <div>
-
                   <Text size={6} margin="0 0 10px 0">
-                    List
+                    <Code>pictures</Code>
                   </Text>
                   <CodePane
                     className={biggerFont}
@@ -510,7 +517,7 @@ export default class Presentation extends React.Component {
               <Appear>
                 <div>
                   <Text size={6} margin="0 0 10px 0">
-                    Item
+                    <Code>Node:p1</Code>
                   </Text>
                   <CodePane
                     className={biggerFont}
@@ -523,7 +530,7 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
 
-            {/* <Slide>
+        {/* <Slide>
               <Text size={6} margin="0 0 20px 0">
                 Connections
               </Text>
@@ -545,7 +552,7 @@ export default class Presentation extends React.Component {
           <Text>✓ reuse in contexts</Text>
           <Text>✓ update on mutation</Text>
           <Text>✓ data completeness</Text>
-          <Text>❓ small amount of code</Text>
+          <Text>✓ small amount of code</Text>
         </Slide>
 
         <Slide>
@@ -613,7 +620,9 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <Heading caps>More<br /> metadata <br/> for<br/> metadata<br/> god!</Heading>
+          <Heading caps>
+            More<br /> metadata <br /> for<br /> metadata<br /> god!
+          </Heading>
         </Slide>
 
         <Slide>
@@ -696,8 +705,14 @@ export default class Presentation extends React.Component {
         <Slide>
           <Heading fit>Just scratching the surface!</Heading>
           <Text margin="10px 0 0 0">This is practically unexplored area!</Text>
-          <Appear><Text margin="10px 0 0 0">Compilable caches from schema ✨</Text></Appear>
-          <Appear><Text margin="10px 0 0 0">Invalidation through query intersections ✨</Text></Appear>
+          <Appear>
+            <Text margin="10px 0 0 0">Compilable caches from schema ✨</Text>
+          </Appear>
+          <Appear>
+            <Text margin="10px 0 0 0">
+              Invalidation through query intersections ✨
+            </Text>
+          </Appear>
         </Slide>
 
         <Slide>
