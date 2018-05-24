@@ -1,0 +1,12 @@
+query {
+  pictureById(id: "p1") {
+    __typename
+    id
+    url
+    author {
+      __typename
+      id
+      name
+    }
+  }
+}

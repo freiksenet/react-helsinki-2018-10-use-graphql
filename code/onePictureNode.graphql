@@ -1,0 +1,14 @@
+query {
+  node(id: "p1") {
+    __typename
+    id
+    ...on Picture {
+      url
+      author {
+        __typename
+        id
+        name
+      }
+    }
+  }
+}

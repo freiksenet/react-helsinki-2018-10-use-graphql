@@ -1,0 +1,12 @@
+query {
+  pictures {
+    __typename
+    id
+    url
+    author {
+      __typename
+      id
+      name
+    }
+  }
+}

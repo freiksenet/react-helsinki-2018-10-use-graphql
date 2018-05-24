@@ -401,6 +401,46 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide> */}
 
+        <Slide>
+          <Heading size={6} margin="0 0 20px 0">
+            Reuse in context
+          </Heading>
+          <Layout>
+            <Fill>
+              <Appear>
+                <div>
+
+                  <Text size={6} margin="0 0 10px 0">
+                    List
+                  </Text>
+                  <CodePane
+                    className={biggerFont}
+                    lang="graphql"
+                    source={require('../code/shortPictures.graphql')}
+                  />
+                </div>
+              </Appear>
+            </Fill>
+            <Fit>
+              <div style={{ width: 20 }} />
+            </Fit>
+            <Fill>
+              <Appear>
+                <div>
+                  <Text size={6} margin="0 0 10px 0">
+                    Item
+                  </Text>
+                  <CodePane
+                    className={biggerFont}
+                    lang="graphql"
+                    source={require('../code/onePicture.graphql')}
+                  />
+                </div>
+              </Appear>
+            </Fill>
+          </Layout>
+        </Slide>
+
         {/* while apollo does that, handling switching context is more manual */}
 
         <Slide>
@@ -441,6 +481,46 @@ export default class Presentation extends React.Component {
             lang="graphql"
             source={require('../code/node.graphql')}
           />
+        </Slide>
+
+        <Slide>
+          <Heading size={6} margin="0 0 20px 0">
+            Reuse in context Relay
+          </Heading>
+          <Layout>
+            <Fill>
+              <Appear>
+                <div>
+
+                  <Text size={6} margin="0 0 10px 0">
+                    List
+                  </Text>
+                  <CodePane
+                    className={biggerFont}
+                    lang="graphql"
+                    source={require('../code/shortPictures.graphql')}
+                  />
+                </div>
+              </Appear>
+            </Fill>
+            <Fit>
+              <div style={{ width: 20 }} />
+            </Fit>
+            <Fill>
+              <Appear>
+                <div>
+                  <Text size={6} margin="0 0 10px 0">
+                    Item
+                  </Text>
+                  <CodePane
+                    className={biggerFont}
+                    lang="graphql"
+                    source={require('../code/onePictureNode.graphql')}
+                  />
+                </div>
+              </Appear>
+            </Fill>
+          </Layout>
         </Slide>
 
             {/* <Slide>
