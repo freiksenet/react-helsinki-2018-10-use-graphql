@@ -67,10 +67,10 @@ export default class Presentation extends React.Component {
       >
         <Slide transition={['zoom', 'spin']} bgColor="primary">
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            GraphQL Client-side Caches
+            GraphQL
           </Heading>
           <Text margin="10px 0 0" size={1} fit bold>
-            why, how and what next
+            a backend perspective
           </Text>
           <Text margin="20% 0 0" textColor="secondary" size={6}>
             Mikhail Novikov
@@ -95,220 +95,141 @@ export default class Presentation extends React.Component {
             @freiksenet
           </Heading>
           <Text textColor="white">Reindex</Text>
+          <Text textColor="white">GraphQL Finland</Text>
           <Text textColor="white">Apollo Launchpad</Text>
           <Text textColor="white">graphql-tools</Text>
           <Text textColor="white">GraphQL delegation</Text>
           <Text textColor="white">GraphQL stitching</Text>
-          <Text textColor="white">GraphQL transforms</Text>
+          <Text textColor="white">Gatsby GraphQL</Text>
         </Slide>
-        {/* <Slide bgColor="tertiary">
+
+        <Slide bgColor="tertiary">
           <Heading size={3} caps lineHeight={1} textColor="secondary">
             Contents
           </Heading>
-          <Appear><Text size={1} margin="10% 0 0">why</Text></Appear>
-          <Appear><Text size={1}  margin="10px 0 0">how</Text></Appear>
-          <Appear><Text size={1} margin="10px 0 0" >what next</Text></Appear>
-        </Slide> */}
-
-        <Slide bgColor="primary">
-          <Text size={1} caps>
-            client-side cache
-          </Text>
-          <Text size={1} textColor="tertiary">
-            aka
-          </Text>
           <Appear>
-            <Text size={1}>api/graphql client</Text>
+            <Text size={1} margin="10% 0 0">
+              what is GraphQL
+            </Text>
           </Appear>
           <Appear>
-            <Text size={1}>client state management</Text>
+            <Text size={1} margin="10px 0 0">
+              why GraphQL is not just about frontend
+            </Text>
           </Appear>
           <Appear>
-            <Text size={1}>Redux :)</Text>
-          </Appear>
-          <Appear>
-            <Text size={1}>MobX, Flux, Ember Data</Text>
-          </Appear>
-          <Appear>
-            <Text size={1}>Apollo Client, Relay, urql</Text>
+            <Text size={1} margin="10px 0 0">
+              strategies for adopting GraphQL
+            </Text>
           </Appear>
         </Slide>
-
-        <Slide>
-          <Heading>Cache ≤ State</Heading>
-        </Slide>
-
-        {/* ---------------------------------------------------------------- */}
-
-        <Slide bgColor="tertiary" transition={['zoom', 'spin']}>
-          <Heading size={1} fit caps lineHeight={1} textColor="quartenary">
-            Why do you need a cache?
+        {/*
+          * What is GraphQL?
+          * Overview of the problem
+          * Overview of the features
+          * Why GraphQL adoption has been so hard
+          * GraphQL myths
+          ** not a database query language
+          ** not a javascript only tool
+          ** not about graph databases
+          ** is not something only frontend developers should want */}
+        <Slide bgColor="tertiary">
+          <Heading caps lineHeight={1} textColor="secondary">
+            GraphQL?
           </Heading>
+          <Appear><Heading textColor="primary" caps>Wut?</Heading></Appear>
+        </Slide>
+        <Slide>
+          <Heading>The problem definition</Heading>
+          <Appear><Text>there is a gap between client and server developer needs and values</Text></Appear>
+        </Slide>
+        <Slide>
+          <Heading>Client requirements change faster than backend</Heading>
+        </Slide>
+        <Slide>
+          <Heading>Client usually has faster development iterations</Heading>
+        </Slide>
+        <Slide>
+          <Heading>Client developers want more flexibility and performance</Heading>
+        </Slide>
+        <Slide>
+          <Heading>GraphQL</Heading>
+          <Text>matching server capabilities with client requirements</Text>
+        </Slide>
+
+
+        <Slide bgColor="tertiary">
+         <Heading caps lineHeight={1} textColor="secondary">
+           GraphQL 101
+         </Heading>
         </Slide>
 
         <Slide>
-          <Heading size={2} caps>
-            Perfect cache
-          </Heading>
-        </Slide>
-
-        {/* only fetching data once */}
-
-        <Slide>
-          <Heading size={1}>Fetch only once</Heading>
-        </Slide>
-
-        {/* using fetched data in different contexts */}
-
-        <Slide>
-          <Heading size={1}>Reuse in different contexts</Heading>
-        </Slide>
-
-        {/* knowing what data you have */}
-
-        <Slide>
-          <Heading size={1}>Handle data completeness</Heading>
-        </Slide>
-
-        {/* invalidation & cache updates */}
-
-        <Slide>
-          <Heading size={1}>
-            Update <br /> after mutations
-          </Heading>
-        </Slide>
-
-        {/* do as much as possible without writing code */}
-
-        <Slide>
-          <Heading size={1}>With the least code possible</Heading>
-        </Slide>
-
-        {/* ---------------------------------------------------------------- */}
-
-        <Slide bgColor="tertiary" transition={['zoom', 'spin']}>
-          <Heading size={1} fit caps lineHeight={1} textColor="quartenary">
-            Implementations
-          </Heading>
-        </Slide>
-
-        {/* caching by request */}
-
-        <Slide>
-          <Heading size={1} fit caps lineHeight={1}>
-            Resource caching
-          </Heading>
-        </Slide>
-
-        {/* fetch only once, can't reuse in contexts, invalidate by query, can't handle data completeness, small amount of code */}
-
-        <Slide>
-          <Heading size={5}>Resource caching</Heading>
-          <Text margin="25px 0 0 0">
-            <Code>{'/pictures'}</Code>
-          </Text>
-          <Text margin="10px 0 0 0">
-            <Code>{'/pictures/5'}</Code>
-          </Text>
-          <Text margin="10px 0 0 0">
-            <Code>{'/me'}</Code>
-          </Text>
-        </Slide>
-
-        {/* <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            Resource caching
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="js"
-            source={require('../code/resourcescaching.js')}
-          />
-        </Slide> */}
-
-        <Slide>
-          <Heading size={5}>Resource caching</Heading>
-          <Text>✓ fetch only once</Text>
-          <Text>✕ reuse in contexts</Text>
-          <Text>⚒ update on mutation</Text>
-          <Text>✕ data completeness</Text>
-          <Text>✓ small amount of code</Text>
+          <Heading>GraphQL parts</Heading>
+          <Text margin="10% 0 0">schema definition (type system)</Text>
+          <Text size={1} margin="10px 0 0">query language for the capabilities (queries)</Text>
+          <Text size={1} margin="10px 0 0">language/framework specific executor</Text>
         </Slide>
 
         <Slide>
-          <Heading size={5}>urql</Heading>
+          <Heading>Schema</Heading>
           <Appear>
-            <Text>GraphQL resource caching</Text>
+            <Text size={1} margin="10% 0 0">
+              A graph of connected types
+                        </Text>
           </Appear>
           <Appear>
-            <Text>GraphQL queries as resources</Text>
+            <Text size={1} margin="10px 0 0">
+logical view, not database view            </Text>
           </Appear>
           <Appear>
-            <Text>Invalidation in mutations</Text>
+            <Text size={1} margin="10px 0 0">
+Set of *root fields*, from which queries start
+            </Text>
           </Appear>
+
         </Slide>
 
-        {/* show REST, show urql */}
-        {/* <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            urql
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="js"
-            source={require('../code/urql.js')}
-          />
-        </Slide> */}
-
-        {/* normalization, caching by id */}
+        <CodeSlide
+          bgColor="tertiary"
+          color="secondary"
+          transition={[]}
+          lang="graphql"
+          code={typeDef1}
+          ranges={[
+            { loc: [0, 18], title: "Schema example" },
+            { loc: [0, 18], title: "Using GraphQL schema language"},
+            { loc: [0, 7], note: "Type definition" },
+            { loc: [1, 2], note: "Field with type"},
+            { loc: [2, 3], note: "Several built in scalar types"},
+            { loc: [4, 5], note: "Link to another type"},
+            { loc: [10, 11], note: "List of other type"},
+            { loc: [13, 18], note: "Root fields"},
+            { loc: [13, 18], note: "Fields can define arguments"},
+          ]} />
 
         <Slide>
-          <Heading size={1} fit caps lineHeight={1}>
-            Object caching
-          </Heading>
+          <Heading>Queries</Heading>
         </Slide>
-
-        <Slide>
-          <Heading size={5}>Object caching</Heading>
-          <Text margin="25px 0 0 0">
-            <Code>{'PictureList'}</Code>
-          </Text>
-          <Text margin="10px 0 0 0">
-            <Code>{'Picture[5]'}</Code>
-          </Text>
-          <Text margin="10px 0 0 0">
-            <Code>{'User'}</Code>
-          </Text>
-        </Slide>
-
-        {/* <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            Manual object normalization
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="graphql"
-            source={require('../code/data.js')}
-          />
-        </Slide> */}
 
         <Slide>
           <Heading size={6} margin="0 0 20px 0">
-            Manual object normalization
+            Basic GraphQL query
           </Heading>
           <Layout>
             <Fill>
               <Appear>
                 <div>
-                  <CodePane
-                    className={biggerFont}
-                    lang="graphql"
-                    source={require('../code/data.js')}
-                  />
-                </div>
+
+                <Text size={6} margin="0 0 10px 0">
+                  GraphQL query
+                </Text>
+                <CodePane
+                  className={biggerFont}
+                  lang="graphql"
+                  source={query1}
+                />
+              </div>
               </Appear>
             </Fill>
             <Fit>
@@ -317,123 +238,38 @@ export default class Presentation extends React.Component {
             <Fill>
               <Appear>
                 <div>
-                  <CodePane
-                    className={biggerFont}
-                    lang="graphql"
-                    source={require('../code/normalizationresult.js')}
-                  />
-                </div>
+                <Text size={6} margin="0 0 10px 0">
+                  Result
+                </Text>
+                <CodePane
+                  className={biggerFont}
+                  lang="graphql"
+                  source={result1}
+                />
+              </div>
               </Appear>
             </Fill>
           </Layout>
         </Slide>
 
-
-        {/* <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            Object caching
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="js"
-            source={require('../code/manualobject.js')}
-          />
-        </Slide> */}
-
-        {/* fetch once, reuse in context, invalidation by id */}
-
-        {/* show result */}
-
-        {/* mapping is manual unless API can provide metadata */}
-
-        {/* metadata needed is a) name of type b) some unique key */}
-
-        <Slide>
-          <Heading size={5}>Object caching</Heading>
-          <Text>✓ fetch only once</Text>
-          <Text>✓ reuse in contexts</Text>
-          <Text>⚒ update on mutation</Text>
-          <Text>⚒ data completeness</Text>
-          <Text>✕ small amount of code</Text>
-        </Slide>
-
-        {/* SHOW METADATA __TYPENAME */}
-
-        <Slide>
-          <Heading fit>But what if we knew the types?</Heading>
-        </Slide>
-
-        {/* metadata is needed to know what data is available, otherwise check manually */}
-
-        <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            Object normalization through metadata
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="graphql"
-            source={require('../code/dataWithTypename.js')}
-          />
-        </Slide>
-
-        <Slide>
-          <Heading size={1} fit caps lineHeight={1}>
-            Apollo Client
-          </Heading>
-        </Slide>
-
-        <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            Query
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="graphql"
-            source={require('../code/pictures.graphql')}
-          />
-        </Slide>
-
-        <Slide>
-          <Heading size={5}>Apollo Client</Heading>
-          <Text margin="25px 0 0 0">
-            <Code>{'Picture:5'}</Code>
-          </Text>
-          <Text margin="10px 0 0 0">
-            <Code>{'User:10'}</Code>
-          </Text>
-          <Text margin="10px 0 0 0">
-            <Code>{'ROOT.pictures'}</Code>
-          </Text>
-        </Slide>
-
-        {/* GRAPHQL DOES THAT ALREADY */}
-
-        {/* show example with Apollo */}
-
-        {/* bonus: can know what data is fetched, manual otherwise */}
-
-        {/* talk about updating stuff by id automatically and getting updates */}
-
         <Slide>
           <Heading size={6} margin="0 0 20px 0">
-            Reuse in context
+            Nested GraphQL query
           </Heading>
           <Layout>
             <Fill>
               <Appear>
                 <div>
-                  <Text size={6} margin="0 0 10px 0">
-                    <Code>pictures</Code>
-                  </Text>
-                  <CodePane
-                    className={biggerFont}
-                    lang="graphql"
-                    source={require('../code/shortPictures.graphql')}
-                  />
-                </div>
+
+                <Text size={6} margin="0 0 10px 0">
+                  GraphQL query
+                </Text>
+                <CodePane
+                  className={biggerFont}
+                  lang="graphql"
+                  source={query2}
+                />
+              </div>
               </Appear>
             </Fill>
             <Fit>
@@ -442,15 +278,15 @@ export default class Presentation extends React.Component {
             <Fill>
               <Appear>
                 <div>
-                  <Text size={6} margin="0 0 10px 0">
-                    <Code>pictureById("p1")</Code>
-                  </Text>
-                  <CodePane
-                    className={biggerFont}
-                    lang="graphql"
-                    source={require('../code/onePicture.graphql')}
-                  />
-                </div>
+                <Text size={6} margin="0 0 10px 0">
+                  Result
+                </Text>
+                <CodePane
+                  className={biggerFont}
+                  lang="graphql"
+                  source={result2}
+                />
+              </div>
               </Appear>
             </Fill>
           </Layout>
@@ -458,316 +294,203 @@ export default class Presentation extends React.Component {
 
         <Slide>
           <Heading size={6} margin="0 0 20px 0">
-            Query = info on completeness
-          </Heading>{' '}
-          <CodePane
-            className={biggerFont}
-            lang="graphql"
-            source={require('../code/apollocache.js')}
-          />
+            Arguments in GraphQL
+          </Heading>
+          <Layout>
+            <Fill>
+              <Appear>
+                <div>
+
+                <Text size={6} margin="0 0 10px 0">
+                  GraphQL query
+                </Text>
+                <CodePane
+                  className={biggerFont}
+                  lang="graphql"
+                  source={query3}
+                />
+              </div>
+              </Appear>
+            </Fill>
+            <Fit>
+              <div style={{ width: 20 }} />
+            </Fit>
+            <Fill>
+              <Appear>
+                <div>
+                <Text size={6} margin="0 0 10px 0">
+                  Result
+                </Text>
+                <CodePane
+                  className={biggerFont}
+                  lang="graphql"
+                  source={result3}
+                />
+              </div>
+              </Appear>
+            </Fill>
+          </Layout>
         </Slide>
 
         <Slide>
-          <Heading size={5}>Apollo Client</Heading>
-          <Text>✓ fetch only once</Text>
-          <Text>⚒ reuse in contexts</Text>
-          <Text>✓ update on mutation</Text>
-          <Text>✓ data completeness</Text>
-          <Text>✓ small amount of code</Text>
+          <Heading>Executor</Heading>
+          <Text>checks query against schema</Text>
+          <Text>fullfils the schema</Text>
+          <Text>graphql-js, graphql-java, graphene, graphql-php...</Text>
         </Slide>
 
         {/*
+
+          * GraphQL is also great for backend developers
+          * Writing less code and having to adapt less
+          * Easy contract to agree on with frontend through GraphQL schema
+          * Potentially better performance than multiple-rest roundtrips
+          * Incrementally adaptable
+          * Allows changing data sources
+          * Available and used by many languages
+
+          * GraphQL adoption or why you might not have a choice anyway
+          * list of companies adopting graphql
+          * will meet graphql eventually
+
+          * go to graphql finland
+          * talk about workshops and talks and international community
+        */}
+
         <Slide bgColor="tertiary">
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Why you can do it with GraphQL?
+         <Heading caps lineHeight={1} textColor="secondary">
+           GraphQL is great for backend too!
+         </Heading>
+        </Slide>
+
+        <Slide>
+          <Image src={require('../assets/haha.png')} />
+        </Slide>
+
+        <Slide>
+         <Heading>
+           No, really :D
+         </Heading>
+        </Slide>
+
+        <Slide>
+          <Text>GraphQL gives backend engineer <b>more</b> control, not less</Text>
+        </Slide>
+
+        <Slide>
+          <Text>
+            Schema is a contract between backend and frontend
+          </Text>
+        </Slide>
+
+        <Slide>
+          <Text>
+            GraphQL encourages designing schema for specific, not general case
+          </Text>
+        </Slide>
+
+        <Slide>
+          <Text>
+            GraphQL is source agnostic, enabling easy refactoring of backend
+          </Text>
+        </Slide>
+
+        <Slide>
+          <Text>
+            GraphQL can be incrementally adopted, reusing existing systems
+          </Text>
+        </Slide>
+
+        <Slide bgColor="tertiary">
+         <Heading caps lineHeight={1} textColor="secondary">
+           How to adopt GraphQL in your organization?
+         </Heading>
+        </Slide>
+
+        <Slide>
+          <Heading>
+            GraphQL-only
           </Heading>
-        </Slide> */}
-
-        {/* while apollo does that, handling switching context is more manual */}
-
-        <Slide>
-          <Heading>✨</Heading>
-          <Heading fit>We can do more magic!</Heading>
-          <Heading>✨ </Heading>
-        </Slide>
-
-        {/* knowing your api is the key */}
-
-        {/* you can know your api with metadata or by restricting the api */}
-
-        {/* graphQL is introspectable, both beforehand (introspection queries) and in runtime (__typename) */}
-
-        <Slide>
-          <Heading>What if we knew more about our API?</Heading>
-        </Slide>
-
-        <Slide>
-          <Heading size={1} fit caps lineHeight={1}>
-            Relay
-          </Heading>
-        </Slide>
-
-        {/* take Relay Compatible GraphQL */}
-
-        {/* restriction over what you can have in api, but more powerful client */}
-
-        {/* node interface */}
-
-        <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            Node interface
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="graphql"
-            source={require('../code/node.graphql')}
-          />
-        </Slide>
-
-        <Slide>
-          <Heading size={6} margin="0 0 20px 0">
-            Reuse in context Relay
-          </Heading>
-          <Layout>
-            <Fill>
-              <Appear>
-                <div>
-                  <Text size={6} margin="0 0 10px 0">
-                    <Code>pictures</Code>
-                  </Text>
-                  <CodePane
-                    className={biggerFont}
-                    lang="graphql"
-                    source={require('../code/shortPictures.graphql')}
-                  />
-                </div>
-              </Appear>
-            </Fill>
-            <Fit>
-              <div style={{ width: 20 }} />
-            </Fit>
-            <Fill>
-              <Appear>
-                <div>
-                  <Text size={6} margin="0 0 10px 0">
-                    <Code>Node:p1</Code>
-                  </Text>
-                  <CodePane
-                    className={biggerFont}
-                    lang="graphql"
-                    source={require('../code/onePictureNode.graphql')}
-                  />
-                </div>
-              </Appear>
-            </Fill>
-          </Layout>
-        </Slide>
-
-        {/* <Slide>
-              <Text size={6} margin="0 0 20px 0">
-                Connections
-              </Text>
-
-              <CodePane
-                className={biggerFont}
-                lang="graphql"
-                source={require('../code/relayconnection.graphql')}
-              />
-            </Slide> */}
-
-        {/* more powerful reuse in context */}
-
-        {/* relay connections */}
-
-        <Slide>
-          <Heading size={5}>Relay</Heading>
-          <Text>✓ fetch only once</Text>
-          <Text>✓ reuse in contexts</Text>
-          <Text>✓ update on mutation</Text>
-          <Text>✓ data completeness</Text>
-          <Text>✓ small amount of code</Text>
-        </Slide>
-
-        <Slide>
-          <Heading fit>Does it have to be restrictive?</Heading>
-        </Slide>
-
-        <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            Node interface v2
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="graphql"
-            source={require('../code/nodeNew.graphql')}
-          />
-        </Slide>
-
-        {/* restrictions are abritrary at the end */}
-
-        {/* more work can be done for updating mutations */}
-
-        {/* ---------------------------------------------------------------- */}
-
-        {/* why does this really work? talk about knowing your api */}
-
-        {/* more advanced stuff */}
-
-        {/* relay, fetching data once */}
-
-        {/* relay and node interface */}
-
-        {/* relay and connections */}
-
-        {/* how limiting api helps */}
-
-        {/* optimizing your queries with compilation */}
-
-        {/* sum-up
-
-          knowing your api is a key for perfect client-side caches
-          you can know your api by either restricting it or using metadata
-          graphql already gives you metadata, enabling great clients
-
-          */}
-
-        {/* ---------------------------------------------------------------- */}
-
-        <Slide bgColor="tertiary" transition={['zoom', 'spin']}>
-          <Heading size={1} caps lineHeight={1} textColor="quartenary">
-            Future
-          </Heading>
-        </Slide>
-
-        <Slide>
-          <Heading fit>The key is knowing your API</Heading>
-        </Slide>
-
-        <Slide>
-          <Heading fit>Metadata is how cache knows API</Heading>
-        </Slide>
-
-        <Slide>
-          <Heading fit>Introspection on compile-time to get metadata</Heading>
-        </Slide>
-
-        <Slide>
-          <Heading caps>
-            More<br /> metadata <br /> for<br /> metadata<br /> god!
-          </Heading>
-        </Slide>
-
-        <Slide>
-          <Heading fit size={5}>
-            GraphQL annotations
-          </Heading>
-          <Text>Attach metadata to types or fields</Text>
-        </Slide>
-
-        {/* marking canonical getters for types */}
-
-        <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            Type annotations
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="graphql"
-            source={require('../code/typefetcher.graphql')}
-          />
-        </Slide>
-
-        <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            Type annotations 2
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="graphql"
-            source={require('../code/typefetcher2.graphql')}
-          />
-        </Slide>
-
-        {/* canonical fetchers for fields, lists, types */}
-
-        <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            Field annotations
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="graphql"
-            source={require('../code/fieldFetcher.graphql')}
-          />
-        </Slide>
-
-        <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            List annotations
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="graphql"
-            source={require('../code/connections.graphql')}
-          />
-        </Slide>
-
-        <Slide>
-          <Text size={6} margin="0 0 20px 0">
-            Server-side mutations
-          </Text>
-
-          <CodePane
-            className={biggerFont}
-            lang="graphql"
-            source={require('../code/serversidemutations.graphql')}
-          />
-        </Slide>
-
-        {/* unique key based fetchers on fields */}
-
-        {/* server side mutations */}
-
-        {/* for graphql, precompiling queries to see data dependencies */}
-
-        <Slide>
-          <Heading fit>Just scratching the surface!</Heading>
-          <Text margin="10px 0 0 0">This is practically unexplored area!</Text>
           <Appear>
-            <Text margin="10px 0 0 0">Compilable caches from schema ✨</Text>
+            <Text size={1} margin="10% 0 0">
+              custom server
+                        </Text>
           </Appear>
           <Appear>
-            <Text margin="10px 0 0 0">
-              Invalidation through query intersections ✨
+            <Text size={1} margin="10px 0 0">
+              BaaS like AWS AppSync, GraphCMS
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="10px 0 0">
+              GraphQL ORMs like Prisma, Hasura, Postgraphile
             </Text>
           </Appear>
         </Slide>
 
         <Slide>
-          <Heading margin="0 0 20px 0">Conclusions</Heading>
+          <Heading>
+            GraphQL over REST
+          </Heading>
           <Appear>
-            <Text margin="0 0 10px 0">GraphQL lets us build smart caches</Text>
-          </Appear>
-          <Appear>
-            <Text margin="0 0 10px 0">Metadata is the key</Text>
-          </Appear>
-          <Appear>
-            <Text margin="0 0 10px 0">
-              GraphQL has first-class introspection
+            <Text size={1} margin="10% 0 0">
+              Wrapper over existing REST API
             </Text>
           </Appear>
           <Appear>
-            <Text margin="0 0 10px 0">We can and should use it more</Text>
+            <Text size={1} margin="10px 0 0">
+              Partial wrappers also possible
+            </Text>
           </Appear>
           <Appear>
-            <Text margin="0 0 10px 0">Future is wonderful!</Text>
+            <Text size={1} margin="10px 0 0">
+              Great to upgrade legacy APIs
+            </Text>
           </Appear>
+        </Slide>
+
+        <Slide>
+          <Heading>
+            GraphQL gateway
+          </Heading>
+          <Appear>
+            <Text size={1} margin="10% 0 0">
+              Aggregating data from multiple microservices
+            </Text>
+          </Appear>
+          <Appear>
+            <Text size={1} margin="10px 0 0">
+              Could also integrate 3rd party APIs
+            </Text>
+          </Appear>
+        </Slide>
+
+        <Slide>
+          <Heading>
+            GraphQL microservices
+          </Heading>
+          <Appear>
+            <Text size={1} margin="10px 0 0">
+              Automatically merging GraphQL APIs with schema stitching
+            </Text>
+          </Appear>
+        </Slide>
+
+        <Slide bgColor="tertiary">
+         <Heading caps lineHeight={1} textColor="secondary">
+           GraphQL adoption is explosive!
+         </Heading>
+         <Text>GitHub, Shopify, Coursera, Microsoft, Airbnb...</Text>
+         <Text>AWS has GraphQL services (AppSync)</Text>
+       </Slide>
+
+        <Slide bgColor="tertiary">
+         <Heading caps lineHeight={1} textColor="white">
+           GraphQL Finland
+         </Heading>
+         <Text textColor="white">18-19th October</Text>
+         <Text>Paasitorni, Helsinki</Text>
+         <Text textColor="primary">Use code "APIOPS" to get 20% discount!</Text>
         </Slide>
 
         <Slide
@@ -790,3 +513,78 @@ export default class Presentation extends React.Component {
     );
   }
 }
+
+const gql = arg => arg.join('');
+
+const typeDef1 = gql`type Repository {
+  id: ID!
+  name: String!
+  url: String!
+  author: User!
+}
+
+type User {
+  id: ID!
+  username: String!
+  repositories: [Repository]
+}
+
+type Query {
+  user: User
+  repositoryById(id: ID!): Repository
+  userById(id: ID!): User
+}`
+
+const query1 = gql`query {
+  user {
+    id
+    username
+  }
+}`
+
+const result1 = `{
+  user: {
+    id: '1',
+    username: 'freiksenet',
+  }
+}`
+
+const query2 = gql`query {
+  user {
+    id
+    username
+    repositories {
+      name
+    }
+  }
+}`
+
+const result2 = `{
+  user: {
+    id: '1',
+    username: 'freiksenet',
+    repositories: [{
+      name: 'www.freiksenet.com',
+    }],
+  },
+}`
+
+const query3 = gql`query {
+  repositoryById(id: "www.freiksenet.com") {
+    id
+    name
+    author {
+      username
+    }
+  }
+}`
+
+const result3 = `{
+  repositoryById: {
+    id: 'www.freiksenet.com',
+    name: 'www.freiksenet.com',
+    author: {
+      username: 'freiksenet',
+    },
+  },
+}`
