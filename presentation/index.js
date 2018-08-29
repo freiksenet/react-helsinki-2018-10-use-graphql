@@ -70,7 +70,7 @@ export default class Presentation extends React.Component {
             GraphQL
           </Heading>
           <Text margin="10px 0 0" size={1} fit bold>
-            a backend perspective
+            it's time to use it
           </Text>
           <Text margin="20% 0 0" textColor="secondary" size={6}>
             Mikhail Novikov
@@ -114,7 +114,7 @@ export default class Presentation extends React.Component {
           </Appear>
           <Appear>
             <Text size={1} margin="10px 0 0">
-              why GraphQL is not just about frontend
+              GraphQL on client
             </Text>
           </Appear>
           <Appear>
@@ -151,6 +151,9 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading>Client developers want more flexibility and performance</Heading>
+        </Slide>
+        <Slide>
+          <Heading>Backend is something client developers work around</Heading>
         </Slide>
         <Slide>
           <Heading>GraphQL</Heading>
@@ -339,37 +342,191 @@ Set of *root fields*, from which queries start
           <Text>graphql-js, graphql-java, graphene, graphql-php...</Text>
         </Slide>
 
-        {/*
+        <Slide bgColor="tertiary">
+         <Heading caps lineHeight={1} textColor="secondary">
+           GraphQL is amazing on the client
+         </Heading>
+        </Slide>
 
-          * GraphQL is also great for backend developers
-          * Writing less code and having to adapt less
-          * Easy contract to agree on with frontend through GraphQL schema
-          * Potentially better performance than multiple-rest roundtrips
-          * Incrementally adaptable
-          * Allows changing data sources
-          * Available and used by many languages
 
-          * GraphQL adoption or why you might not have a choice anyway
-          * list of companies adopting graphql
-          * will meet graphql eventually
+        <Slide>
+          <Heading>GraphQL clients</Heading>
+        </Slide>
 
-          * go to graphql finland
-          * talk about workshops and talks and international community
-        */}
+        <Slide>
+          <Text>Full solution to client-side caching of server data</Text>
+        </Slide>
+
+        <Slide>
+          <Text>Apollo Client</Text>
+          <Text>Relay</Text>
+          <Text>urql, graphql-request, react-reach</Text>
+        </Slide>
+
+        <Slide>
+          <Heading>Selecting only data you need</Heading>
+        </Slide>
+
+        <CodeSlide
+          bgColor="tertiary"
+          color="secondary"
+          transition={[]}
+          lang="graphql"
+          code={require('../code/RootComponent.js')}
+          ranges={[
+            { loc: [0, 30], title: "Basic GraphQL example" },
+            { loc: [0, 30], title: "using react-apollo"},
+            { loc: [0, 10], note: "Data that we need to render our UI" },
+            { loc: [12, 13], note: "Component to request that data"},
+            { loc: [13, 14], note: "Render prop to handle loading state"},
+            { loc: [12, 13], note: "Subsequent renders will use cache"},
+            { loc: [18, 25], note: "Render as you'd do with props"},
+          ]} />
+
+
+        <Slide>
+          <Heading>Maps great to component model</Heading>
+        </Slide>
+
+        <CodeSlide
+          bgColor="tertiary"
+          color="secondary"
+          transition={[]}
+          lang="graphql"
+          code={require('../code/RootComponent.js')}
+          ranges={[
+            { loc: [0, 30], title: "Repository should be it's own component"},
+            { loc: [0, 10], note: "Data that we need to render our UI" },
+            { loc: [3, 4], note: "This data parent needs to render the heading"},
+            { loc: [4, 7], note: "But this data is only need in Repository"},
+          ]} />
+
+          <Slide>
+            <Heading size={6} margin="0 0 20px 0">
+              Fragments
+            </Heading>
+            <Layout>
+              <Fill>
+                <Appear>
+                  <div>
+
+                  <Text size={6} margin="0 0 10px 0">
+                    GraphQL query
+                  </Text>
+                  <CodePane
+                    className={biggerFont}
+                    lang="graphql"
+                    source={`query {
+  viewer {
+    username
+      repositories {
+        name
+      }
+    }
+  }`}
+                  />
+                </div>
+                </Appear>
+              </Fill>
+              <Fit>
+                <div style={{ width: 20 }} />
+              </Fit>
+              <Fill>
+                <Appear>
+                  <div>
+                  <Text size={6} margin="0 0 10px 0">
+                    With fragment
+                  </Text>
+                  <CodePane
+                    className={biggerFont}
+                    lang="graphql"
+                    source={`query {
+  viewer {
+    username
+      repositories {
+        ...RepositoryFragment
+      }
+    }
+  }
+
+  fragment RepositoryFragment on Repository {
+    name
+  }`}
+                  />
+                </div>
+                </Appear>
+              </Fill>
+            </Layout>
+          </Slide>
+
+        <Slide>
+          <Text>With fragments, each component can define it's data requirements</Text>
+        </Slide>
+
+        <Slide>
+          <Heading size={6} margin="0 0 20px 0">
+            Collocation
+          </Heading>          <CodePane
+            className={biggerFont}
+            lang="js"
+            source={require('../code/Repository.js')}
+          />
+        </Slide>
+
+
+        <Slide>
+          <Text>Collocated fragments + TypeScript codegen</Text>
+        </Slide>
+
+
+                <Slide>
+                  <Heading size={6} margin="0 0 20px 0">
+                    Typescript
+                  </Heading>                    <CodePane
+                    className={biggerFont}
+                    lang="js"
+                    source={require('../code/Repository.ts')}
+                  />
+                </Slide>
+
+
+
+        <Slide>
+          <Heading>Introspective nature enables tooling</Heading>
+        </Slide>
+
+        <Slide>
+          <Image src="https://cdn-images-1.medium.com/max/2000/1*adGjZ9lofuO_ohkmlqtZvg.gif" />
+        </Slide>
+
+        <Slide>
+          <Image src="https://camo.githubusercontent.com/97dc1080d5e6883c4eec3eaa6b7d0f29802e6b4b/687474703a2f2f672e7265636f726469742e636f2f497379504655484e5a342e676966" />
+        </Slide>
 
         <Slide bgColor="tertiary">
          <Heading caps lineHeight={1} textColor="secondary">
-           GraphQL is great for backend too!
+           How to adopt GraphQL in your organization?
          </Heading>
         </Slide>
+
+        <Slide>
+          <Text>Client developers drive GraphQL adoption</Text>
+        </Slide>
+
+        <Slide>
+          <Text>
+            But we need to convince backend developers
+          </Text>
+        </Slide>
+
 
         <Slide>
           <Image src={require('../assets/haha.png')} />
         </Slide>
 
-        <Slide>
-         <Heading>
-           No, really :D
+        <Slide bgColor="tertiary">
+         <Heading caps lineHeight={1} textColor="secondary">
+           GraphQL is great for backend too!
          </Heading>
         </Slide>
 
@@ -401,80 +558,74 @@ Set of *root fields*, from which queries start
           </Text>
         </Slide>
 
-        <Slide bgColor="tertiary">
-         <Heading caps lineHeight={1} textColor="secondary">
-           How to adopt GraphQL in your organization?
-         </Heading>
-        </Slide>
+          {/* <Slide>
+            <Heading>
+              GraphQL-only
+            </Heading>
+            <Appear>
+              <Text size={1} margin="10% 0 0">
+                custom server
+              </Text>
+            </Appear>
+            <Appear>
+              <Text size={1} margin="10px 0 0">
+                BaaS like AWS AppSync, GraphCMS
+              </Text>
+            </Appear>
+            <Appear>
+              <Text size={1} margin="10px 0 0">
+                GraphQL ORMs like Prisma, Hasura, Postgraphile
+              </Text>
+            </Appear>
+          </Slide>
 
-        <Slide>
-          <Heading>
-            GraphQL-only
-          </Heading>
-          <Appear>
-            <Text size={1} margin="10% 0 0">
-              custom server
-                        </Text>
-          </Appear>
-          <Appear>
-            <Text size={1} margin="10px 0 0">
-              BaaS like AWS AppSync, GraphCMS
-            </Text>
-          </Appear>
-          <Appear>
-            <Text size={1} margin="10px 0 0">
-              GraphQL ORMs like Prisma, Hasura, Postgraphile
-            </Text>
-          </Appear>
-        </Slide>
+          <Slide>
+            <Heading>
+              GraphQL over REST
+            </Heading>
+            <Appear>
+              <Text size={1} margin="10% 0 0">
+                Wrapper over existing REST API
+              </Text>
+            </Appear>
+            <Appear>
+              <Text size={1} margin="10px 0 0">
+                Partial wrappers also possible
+              </Text>
+            </Appear>
+            <Appear>
+              <Text size={1} margin="10px 0 0">
+                Great to upgrade legacy APIs
+              </Text>
+            </Appear>
+          </Slide>
 
-        <Slide>
-          <Heading>
-            GraphQL over REST
-          </Heading>
-          <Appear>
-            <Text size={1} margin="10% 0 0">
-              Wrapper over existing REST API
-            </Text>
-          </Appear>
-          <Appear>
-            <Text size={1} margin="10px 0 0">
-              Partial wrappers also possible
-            </Text>
-          </Appear>
-          <Appear>
-            <Text size={1} margin="10px 0 0">
-              Great to upgrade legacy APIs
-            </Text>
-          </Appear>
-        </Slide>
+          <Slide>
+            <Heading>
+              GraphQL gateway
+            </Heading>
+            <Appear>
+              <Text size={1} margin="10% 0 0">
+                Aggregating data from multiple microservices
+              </Text>
+            </Appear>
+            <Appear>
+              <Text size={1} margin="10px 0 0">
+                Could also integrate 3rd party APIs
+              </Text>
+            </Appear>
+          </Slide>
 
-        <Slide>
-          <Heading>
-            GraphQL gateway
-          </Heading>
-          <Appear>
-            <Text size={1} margin="10% 0 0">
-              Aggregating data from multiple microservices
-            </Text>
-          </Appear>
-          <Appear>
-            <Text size={1} margin="10px 0 0">
-              Could also integrate 3rd party APIs
-            </Text>
-          </Appear>
-        </Slide>
-
-        <Slide>
-          <Heading>
-            GraphQL microservices
-          </Heading>
-          <Appear>
-            <Text size={1} margin="10px 0 0">
-              Automatically merging GraphQL APIs with schema stitching
-            </Text>
-          </Appear>
-        </Slide>
+          <Slide>
+            <Heading>
+              GraphQL microservices
+            </Heading>
+            <Appear>
+              <Text size={1} margin="10px 0 0">
+                Automatically merging GraphQL APIs with schema stitching
+              </Text>
+            </Appear>
+          </Slide> */}
 
         <Slide bgColor="tertiary">
          <Heading caps lineHeight={1} textColor="secondary">
@@ -490,7 +641,7 @@ Set of *root fields*, from which queries start
          </Heading>
          <Text textColor="white">18-19th October</Text>
          <Text>Paasitorni, Helsinki</Text>
-         <Text textColor="primary">Use code "APIOPS" to get 20% discount!</Text>
+         <Text textColor="primary">Use code "REACTHELSINKI" to get 20% discount!</Text>
         </Slide>
 
         <Slide
